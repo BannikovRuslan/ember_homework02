@@ -1,0 +1,9 @@
+
+$tb-padding: 20px;
+$nav-height: 56px;
+$footer-height: 60px;
+
+.ptop-bottom {
+    padding-top: $nav-height + $tb-padding;
+    padding-bottom: $footer-height + $tb-padding;
+}

@@ -1,6 +1,4 @@
 
 @import "ember-bootstrap/bootstrap";
-
-.mtop-80 {
-    margin-top: 80px;
-}
+@import "mainpage.scss";
+@import "fixbugs.scss";
