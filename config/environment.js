@@ -4,7 +4,8 @@ module.exports = function(environment) {
   let ENV = {
     modulePrefix: 'ember-homework02',
     environment,
-    rootURL: '/ember_homework02',
+    rootURL: '/',
+    backendURL: 'http://localhost:3000',
     locationType: 'auto',
     EmberENV: {
       FEATURES: {
@@ -22,6 +23,8 @@ module.exports = function(environment) {
       // when it is created
     }
   };
+  ENV.fileUploadURL = ENV.backendURL + '/FileUpload';
+
 
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;

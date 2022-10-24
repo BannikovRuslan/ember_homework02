@@ -1,0 +1,111 @@
+{
+  "authors": [
+    {
+      "id": 2,
+      "firstName": "Ray",
+      "lastName": "Bradbury"
+    },
+    {
+      "id": 1,
+      "firstName": "Arthur",
+      "lastName": "Doyle"
+    },
+    {
+      "id": 3,
+      "firstName": "Robert",
+      "lastName": "Frost"
+    },
+    {
+      "firstName": "Jhon",
+      "lastName": "Smith",
+      "id": 7
+    }
+  ],
+  "books": [
+    {
+      "id": 1,
+      "o": {
+        "t": 1,
+        "m": "test"
+      },
+      "cover": "/uploads/cover_stories-1666268686848.webp",
+      "title": "The Stories about Sherlock Holmes",
+      "author": "Arthur Doyle",
+      "pages": 160,
+      "tags": [
+        "detective",
+        "bestseller",
+        "Sherlock Holmes"
+      ],
+      "rating": 100,
+      "description": "https://www.labirint.ru/books/792214/"
+    },
+    {
+      "id": 2,
+      "o": {
+        "t": 1,
+        "m": "test"
+      },
+      "cover": "/uploads/cover_wine-1666268665562.webp",
+      "title": "The Dandelion Wine",
+      "author": "Ray Bradbury",
+      "pages": 592,
+      "tags": [
+        "classic",
+        "bestseller"
+      ],
+      "rating": 74,
+      "description": "https://www.labirint.ru/books/822866/"
+    },
+    {
+      "id": 3,
+      "o": {
+        "t": 1,
+        "m": "test"
+      },
+      "cover": "/uploads/cover_basker-1666268697099.webp",
+      "title": "The Hound of the Baskervilles",
+      "author": "Arthur Doyle",
+      "pages": 384,
+      "tags": [
+        "detective",
+        "bestseller",
+        "Sherlock Holmes"
+      ],
+      "rating": 100,
+      "description": "https://www.labirint.ru/books/867649/"
+    },
+    {
+      "title": "zcvzvcz",
+      "author": "zvvczx",
+      "pages": "5",
+      "cover": "/uploads/book-cover-1666420072963.jpg",
+      "tags": [
+        "zvczxvxzv"
+      ],
+      "description": "https://empty.com",
+      "rating": 0,
+      "id": 5
+    }
+  ],
+  "speakers": [
+    {
+      "id": 1,
+      "lastName": "Oblomov",
+      "firstName": "Victor",
+      "middleName": "Sergeevich"
+    },
+    {
+      "id": 2,
+      "lastName": "Kolobkov",
+      "firstName": "Edgar",
+      "middleName": "Ivanovich"
+    },
+    {
+      "id": 3,
+      "lastName": "Sereda",
+      "firstName": "Maksim",
+      "middleName": "Anatolievich"
+    }
+  ]
+}
