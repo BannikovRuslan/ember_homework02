@@ -31,12 +31,12 @@ module.exports = function(defaults) {
   // app.import('node_modules/blueimp-file-upload/js/jquery.fileupload.js');
 
   const jsFiles = funnel('vendor', {
-    files: ['popper.min.js', 'tagsinput.js', 'jquery-ui.js'],
+    include: ['popper.min.js', 'tagsinput.js', 'jquery-ui.js'],
     destDir: 'js'
   });
 
   const jqueryFiles = funnel('node_modules/blueimp-file-upload/js', {
-    files: ['**/*.js'],
+    include: ['**/*.js'],
     destDir: 'js'
   });
 

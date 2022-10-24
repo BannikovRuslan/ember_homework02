@@ -11,6 +11,10 @@ Router.map(function() {
   this.route('speakers');
   this.route('edit-book', { path: '/edit-book/:id'});
   this.route('edit-speaker');
+  this.route('create-book');
+  this.route('loading');
+  this.route('404', { parh: '*path'});
+  this.route('error');
 });
 
 export default Router;

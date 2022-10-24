@@ -5,12 +5,26 @@ import { later } from '@ember/runloop';
 
 export default Route.extend({
     dataService: service('data'),
+    
+    queryParams: {
+        search: {
+            refreshModel: true
+        },
+        tags: {
+            refreshModel: true
+        }
+    },
 
-    model() {
+    model( {search, tags} ) {
         let promise = new Promise((resolve, reject) => {
             later(async () => {
                 try {
-                    let books = await this.get('dataService').getBooks();
+                    search = typeof search == 'undefined'? '':search.replace("#","").replace(",","");
+                    tags = typeof tags == 'undefined'? '':tags.replace("#","").replace(",","");
+                    this.controller.set('tagsBook', tags); 
+                    console.log("search=", search);
+                    console.log("tags=", tags);
+                    let books = await this.get('dataService').getBooks(search, tags);
                     resolve(books);    
                 } catch (error) {
                     reject('Connection failed');
@@ -29,12 +43,25 @@ export default Route.extend({
         this.set('modelPromise', promise);
     },
 
-    setupController(controller) {
-        this._super(...arguments);
-        if (this.get('modelPromise')) {
-            controller.set('isLoading', true);
-            
-        }        
-        
+    beforeModel(transition) {
+        let chi = transition.router.currentHandlerInfos;
+        let currentRouteName = this.get('routeName');
+        let prevRouteName = '';
+        if (chi && chi.length > 0) {
+            let lastRouteName = chi[chi.length - 1].name
+            prevRouteName = lastRouteName === 'loading' ? chi[chi.length - 2].name : lastRouteName;
+        }
+
+        if (prevRouteName != currentRouteName && prevRouteName !== 'application') {
+            transition.promise.then(() => {
+                this.send('refreshBooks');
+            });
+        }
+    },
+
+    actions : {
+        refreshBooks() {
+            this.refresh();
+        }
     }
 });
