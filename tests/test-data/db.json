@@ -76,12 +76,27 @@
       "description": "https://www.labirint.ru/books/867649/"
     },
     {
-      "title": "zcvzvcz",
-      "author": "zvvczx",
-      "pages": "5",
-      "cover": "/uploads/book-cover-1666420072963.jpg",
+      "title": "Poems",
+      "author": "Robert Frost",
+      "pages": "304",
+      "cover": "/uploads/cover_poems-1666614923940.webp",
       "tags": [
-        "zvczxvxzv"
+        "classic",
+        "poems"
+      ],
+      "description": "https://www.labirint.ru/books/792581/",
+      "rating": 92,
+      "id": 4
+    },
+    {
+      "title": "Test",
+      "author": "Testov Testovich",
+      "pages": "150",
+      "cover": "/uploads/book-cover-1666615185931.jpg",
+      "tags": [
+        "test",
+        "best",
+        "for all"
       ],
       "description": "https://empty.com",
       "rating": 0,
@@ -93,19 +108,48 @@
       "id": 1,
       "lastName": "Oblomov",
       "firstName": "Victor",
-      "middleName": "Sergeevich"
+      "middleName": "Sergeevich",
+      "foto": "/images/speaker.jpg"
     },
     {
       "id": 2,
       "lastName": "Kolobkov",
       "firstName": "Edgar",
-      "middleName": "Ivanovich"
+      "middleName": "Ivanovich",
+      "foto": "/images/speaker.jpg"
     },
     {
       "id": 3,
       "lastName": "Sereda",
       "firstName": "Maksim",
-      "middleName": "Anatolievich"
+      "middleName": "Anatolievich",
+      "foto": "/images/speaker.jpg"
+    },
+    {
+      "id": 4,
+      "lastName": "Zaburov",
+      "firstName": "Maksim",
+      "middleName": "Aristarhovich",
+      "foto": "/images/speaker.jpg"
+    },
+    {
+      "id": 5,
+      "lastName": "Sologub",
+      "firstName": "Andrey",
+      "middleName": "Anatolievich",
+      "foto": "/images/speaker.jpg"
+    },
+    {
+      "firstName": "Vsevolod",
+      "lastName": "Bagration",
+      "middleName": "Aliberovich",
+      "id": 6
+    },
+    {
+      "firstName": "Maksim",
+      "lastName": "Dolgorukov",
+      "middleName": "Anatolievich",
+      "id": 7
     }
   ]
 }

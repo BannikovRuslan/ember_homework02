@@ -3,19 +3,15 @@ import { inject as service } from '@ember/service';
 
 export default Controller.extend({
     dataService: service('data'),
-    queryParams: ["search", "tags"],
+    queryParams: ["search"],
     search: '',
-    tags: '',
 
     async loadData() {
         try {
             this.set('isLoading', true);
             const search = typeof this.search == 'undefined'? '':this.search.replace("#","").replace(",","");
-            const tags = typeof this.tags == 'undefined'? '':this.tags.replace("#","").replace(",","");
-            this.set('tagsBook', tags); 
             console.log("search=", search);
-            console.log("tags=", tags);
-            const data = await this.get('dataService').getBooks(search, tags);
+            const data = await this.get('dataService').getSpeakers(search);
             this.set('model', data);
             this.set('isLoading', false);
         }
@@ -25,22 +21,20 @@ export default Controller.extend({
     },
 
     actions: {
-        async deleteBook(book) {
+        async deleteSpeaker(speaker) {
             try {
-                await this.get('dataService').deleteBook(book);
-                console.log("book deleted ");
-                //this.transitionToRoute("books", {queryParams: { search: '#' }});
-                this.send('refreshBooks');
+                await this.get('dataService').deleteSpeaker(speaker);
+                console.log("speaker deleted ");
+                this.send('refreshSpeakers');
             } 
             catch (error) {
                 this.send('error', new Error('Connection failed'));
             }
         },
         
-        async searchBooks(event) {
+        async searchSpeakers(event) {
             event.preventDefault();
-            this.transitionToRoute("books", {queryParams: { search: this.searchBook, tags: this.tagsBook }});
-        }
-        
+            this.transitionToRoute("speakers", {queryParams: { search: this.searchBook }});
+        }     
     }
 });
