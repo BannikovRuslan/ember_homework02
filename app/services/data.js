@@ -16,7 +16,7 @@ export default Service.extend({
         queryParams = `?tags_like=${tags}`;
       }
     }
-    
+
     return fetch(`${ENV.backendURL}/books${queryParams}`).then((response) => response.json());
   },
 
@@ -24,7 +24,7 @@ export default Service.extend({
     return fetch(`${ENV.backendURL}/books/${id}`).then((response) => response.json());
   },
 
- createBook(book) {
+  createBook(book) {
     return fetch(`${ENV.backendURL}/books`, {
       method: 'POST',
       headers: {
@@ -36,12 +36,12 @@ export default Service.extend({
 
   async updateBook(book, bookID) {
     return fetch(`${ENV.backendURL}/books/${bookID}`, {
-          method: 'PATCH',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(book)
-        }).then((response) => response.json());
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(book)
+    }).then((response) => response.json());
   },
 
   async saveBook(book, uploadData, bookID) {
@@ -53,7 +53,7 @@ export default Service.extend({
         }
         else {
           savedBookPromise = await this.updateBook(book, bookID);
-        }         
+        }
 
         const savedBook = savedBookPromise;
 
@@ -62,16 +62,14 @@ export default Service.extend({
         }
 
         uploadData.url = `${ENV.fileUploadURL}`;
-
-        // uploadData.headers = getOwner(this).lookup('adapter:application').get('headers');
         uploadData.submit().done(async (result/*, textStatus, jqXhr*/) => {
-          try {         
+          try {
             const dataToUpload = {
               entityName: 'books',
               id: savedBook.id,
               fileName: result.filename
             };
-        
+
             await fetch(`${ENV.backendURL}/saveURL`, {
               method: 'POST',
               headers: {
@@ -99,39 +97,41 @@ export default Service.extend({
     return fetch(`${ENV.backendURL}/books/${book.id}`, { method: 'DELETE' });
   },
 
-  getAuthors(search) {
+
+
+  getSpeakers(search) {
     let queryParams = '';
     if (search) {
       queryParams = `?q=${search}`;
     }
-    return fetch(`${ENV.backendURL}/authors${queryParams}`).then((response) => response.json());
+    return fetch(`${ENV.backendURL}/speakers${queryParams}`).then((response) => response.json());
   },
 
-  getAuthor(id) {
-    return fetch(`${ENV.backendURL}/authors/${id}`).then((response) => response.json());
+  getSpeaker(id) {
+    return fetch(`${ENV.backendURL}/speakers/${id}`).then((response) => response.json());
   },
 
-  deleteAuthor(author) {
-    return fetch(`${ENV.backendURL}/authors/${author.id}`, { method: 'DELETE' });
+  deleteSpeaker(speaker) {
+    return fetch(`${ENV.backendURL}/speakers/${speaker.id}`, { method: 'DELETE' });
   },
 
-  updateAuthor(author) {
-    return fetch(`${ENV.backendURL}/authors/${author.id}`, {
+  updateSpeaker(speaker) {
+    return fetch(`${ENV.backendURL}/speakers/${speaker.id}`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(author)
+      body: JSON.stringify(speaker)
     });
   },
 
-  async createAuthor(author) {
-    return fetch(`${ENV.backendURL}/authors`, {
+  createSpeaker(speaker) {
+    return fetch(`${ENV.backendURL}/speakers`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(author)
+      body: JSON.stringify(speaker)
     });
   }
 });

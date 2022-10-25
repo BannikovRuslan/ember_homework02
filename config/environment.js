@@ -4,7 +4,7 @@ module.exports = function(environment) {
   let ENV = {
     modulePrefix: 'ember-homework02',
     environment,
-    rootURL: '/',
+    rootURL: '/ember_homework02/',
     backendURL: 'http://localhost:3000',
     locationType: 'auto',
     EmberENV: {

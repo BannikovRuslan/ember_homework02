@@ -101,18 +101,6 @@
       "description": "https://empty.com",
       "rating": 0,
       "id": 5
-    },
-    {
-      "title": "уфывфыв",
-      "author": "ыфвы",
-      "pages": "",
-      "cover": "/uploads/book-cover-1666673344710.jpg",
-      "tags": [
-        "ыфвыфв"
-      ],
-      "description": "https://empty.com",
-      "rating": 0,
-      "id": 6
     }
   ],
   "speakers": [
@@ -120,19 +108,48 @@
       "id": 1,
       "lastName": "Oblomov",
       "firstName": "Victor",
-      "middleName": "Sergeevich"
+      "middleName": "Sergeevich",
+      "foto": "/images/speaker.jpg"
     },
     {
       "id": 2,
       "lastName": "Kolobkov",
       "firstName": "Edgar",
-      "middleName": "Ivanovich"
+      "middleName": "Ivanovich",
+      "foto": "/images/speaker.jpg"
     },
     {
       "id": 3,
       "lastName": "Sereda",
       "firstName": "Maksim",
-      "middleName": "Anatolievich"
+      "middleName": "Anatolievich",
+      "foto": "/images/speaker.jpg"
+    },
+    {
+      "id": 4,
+      "lastName": "Zaburov",
+      "firstName": "Maksim",
+      "middleName": "Aristarhovich",
+      "foto": "/images/speaker.jpg"
+    },
+    {
+      "id": 5,
+      "lastName": "Sologub",
+      "firstName": "Andrey",
+      "middleName": "Anatolievich",
+      "foto": "/images/speaker.jpg"
+    },
+    {
+      "firstName": "Vsevolod",
+      "lastName": "Bagration",
+      "middleName": "Aliberovich",
+      "id": 6
+    },
+    {
+      "firstName": "Maksim",
+      "lastName": "Dolgorukov",
+      "middleName": "Anatolievich",
+      "id": 7
     }
   ]
 }
