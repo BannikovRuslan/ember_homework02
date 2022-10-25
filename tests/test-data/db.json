@@ -76,16 +76,43 @@
       "description": "https://www.labirint.ru/books/867649/"
     },
     {
-      "title": "zcvzvcz",
-      "author": "zvvczx",
-      "pages": "5",
-      "cover": "/uploads/book-cover-1666420072963.jpg",
+      "title": "Poems",
+      "author": "Robert Frost",
+      "pages": "304",
+      "cover": "/uploads/cover_poems-1666614923940.webp",
       "tags": [
-        "zvczxvxzv"
+        "classic",
+        "poems"
+      ],
+      "description": "https://www.labirint.ru/books/792581/",
+      "rating": 92,
+      "id": 4
+    },
+    {
+      "title": "Test",
+      "author": "Testov Testovich",
+      "pages": "150",
+      "cover": "/uploads/book-cover-1666615185931.jpg",
+      "tags": [
+        "test",
+        "best",
+        "for all"
       ],
       "description": "https://empty.com",
       "rating": 0,
       "id": 5
+    },
+    {
+      "title": "уфывфыв",
+      "author": "ыфвы",
+      "pages": "",
+      "cover": "/uploads/book-cover-1666673344710.jpg",
+      "tags": [
+        "ыфвыфв"
+      ],
+      "description": "https://empty.com",
+      "rating": 0,
+      "id": 6
     }
   ],
   "speakers": [

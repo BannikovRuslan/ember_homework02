@@ -26,6 +26,9 @@
         </div>
     </div>
 
+    {{#if this.isLoading}}        
+        <h2 class="text-center"><img src="/images/loading.gif" alt="loading">Loading ...</h2>         
+    {{else}}
     <div class="row row-cols-1 row-cols-md-3 fix-margin">
         {{#each model as |book|}}
         <div class="col mb-4">
@@ -60,4 +63,5 @@
         </div>
         {{/each}}
     </div>
+    {{/if}}
 </div>

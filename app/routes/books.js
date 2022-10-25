@@ -15,32 +15,16 @@ export default Route.extend({
         }
     },
 
-    model( {search, tags} ) {
-        let promise = new Promise((resolve, reject) => {
-            later(async () => {
-                try {
-                    search = typeof search == 'undefined'? '':search.replace("#","").replace(",","");
-                    tags = typeof tags == 'undefined'? '':tags.replace("#","").replace(",","");
-                    this.controller.set('tagsBook', tags); 
-                    console.log("search=", search);
-                    console.log("tags=", tags);
-                    let books = await this.get('dataService').getBooks(search, tags);
-                    resolve(books);    
-                } catch (error) {
-                    reject('Connection failed');
-                }
-            }, 500);
-        }).
-        then((books) => {
-            this.set('controller.model',  books);
-        }).
-        finally(() => {
-            if (promise === this.get('modelPromise')) {
-                this.set('controller.isLoading',false); 
-            }
-        });
+    async model( {search, tags} ) {
+        return {
+            isLoading: true
+        }
+    },
 
-        this.set('modelPromise', promise);
+    setupController(controller, model) {
+        this._super(...arguments);
+        controller.set('isLoading', true);
+        controller.loadData();
     },
 
     beforeModel(transition) {
@@ -62,6 +46,7 @@ export default Route.extend({
     actions : {
         refreshBooks() {
             this.refresh();
-        }
+        },
+        
     }
 });
