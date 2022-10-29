@@ -101,6 +101,19 @@
       "description": "https://empty.com",
       "rating": 0,
       "id": 5
+    },
+    {
+      "title": "2",
+      "author": "3",
+      "pages": "7",
+      "cover": "/uploads/cover_basker-1667033302188.webp",
+      "tags": [
+        "weqwe",
+        "werwerewr433"
+      ],
+      "description": "https://empty.comere",
+      "rating": 0,
+      "id": 6
     }
   ],
   "speakers": [

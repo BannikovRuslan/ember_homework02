@@ -1,4 +1,4 @@
-<img src={{book.cover}} class="card-img-top" alt="Обложка книги">
+<img src={{if book.cover book.cover "/images/book-cover.jpg"}} class="card-img-top" alt="Обложка книги">
 <div class="card-header">
     <h5 class="card-title">{{book.title}}</h5>
 </div>

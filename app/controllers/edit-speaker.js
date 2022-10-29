@@ -15,10 +15,7 @@ export default Controller.extend({
                 this.transitionToRoute('speakers'); 
             } catch (error) {
                 this.send('error', new Error('Connection failed'));
-            }
-            
-
-                    
+            }                    
         },
     }
 });

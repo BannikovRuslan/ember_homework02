@@ -10,7 +10,6 @@ export default Controller.extend({
         try {
             this.set('isLoading', true);
             const search = typeof this.search == 'undefined'? '':this.search.replace("#","").replace(",","");
-            console.log("search=", search);
             const data = await this.get('dataService').getSpeakers(search);
             this.set('model', data);
             this.set('isLoading', false);
@@ -24,7 +23,6 @@ export default Controller.extend({
         async deleteSpeaker(speaker) {
             try {
                 await this.get('dataService').deleteSpeaker(speaker);
-                console.log("speaker deleted ");
                 this.send('refreshSpeakers');
             } 
             catch (error) {

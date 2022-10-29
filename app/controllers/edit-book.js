@@ -8,12 +8,12 @@ export default Controller.extend({
   actions: {
     changeTags(newTags) {
       set(this, 'tags', [...newTags]);
-      console.log(get(this, 'tags'));
+      //console.log(get(this, 'tags'));
     },
 
     async saveBook(e) {
       e.preventDefault();
-      console.log(get(this, 'tags'));
+      //console.log(get(this, 'tags'));
       try {
         set(this, 'isUploadingFile', true);
         const uploadData = get(this, 'uploadData');
@@ -38,26 +38,7 @@ export default Controller.extend({
 
     changeUploadData(uploadData) {
       set(this, 'uploadData', uploadData);
-    },
-
-    change() {
-      set(this, 'tags', ['1', '2', '3']);
-    },
-
-    goToTemp(/* e */) {
-      //e.preventDefault();
-      this.transitionToRoute('temp')
     }
-  },
-
-  reset() {
-    set(this, 'isUploadingFile', false);
-    set(this, 'bookName', '');
-    set(this, 'authorFIO', '');
-    set(this, 'pagesCount', '');
-    set(this, 'bookDescriptionURL', '');
-    set(this, 'tags', []);
-    set(this, 'uploadData', null);
   }
 });
 

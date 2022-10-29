@@ -13,8 +13,8 @@ export default Controller.extend({
             const search = typeof this.search == 'undefined'? '':this.search.replace("#","").replace(",","");
             const tags = typeof this.tags == 'undefined'? '':this.tags.replace("#","").replace(",","");
             this.set('tagsBook', tags); 
-            console.log("search=", search);
-            console.log("tags=", tags);
+            //console.log("search=", search);
+            //console.log("tags=", tags);
             const data = await this.get('dataService').getBooks(search, tags);
             this.set('model', data);
             this.set('isLoading', false);
@@ -28,7 +28,7 @@ export default Controller.extend({
         async deleteBook(book) {
             try {
                 await this.get('dataService').deleteBook(book);
-                console.log("book deleted ");
+                //console.log("book deleted ");
                 //this.transitionToRoute("books", {queryParams: { search: '#' }});
                 this.send('refreshBooks');
             } 
