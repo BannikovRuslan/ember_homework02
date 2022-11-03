@@ -1,8 +1,6 @@
 import Controller from '@ember/controller';
-import { inject as service } from '@ember/service';
 
 export default Controller.extend({
-    dataService: service('data'),
     queryParams: ["search"],
     search: '',
 
@@ -10,23 +8,29 @@ export default Controller.extend({
         try {
             this.set('isLoading', true);
             const search = typeof this.search == 'undefined'? '':this.search.replace("#","").replace(",","");
-            const data = await this.get('dataService').getSpeakers(search);
-            this.set('model', data);
+
+            if (search) {
+                const data = await this.store.query('speaker', { q: search});
+                this.set('model', data);
+            } 
+            else {
+                const data = await this.store.findAll('speaker');
+                this.set('model', data);
+            }
             this.set('isLoading', false);
         }
         catch (error) {
-            this.send('error', new Error('Connection failed'));
+            this.send('error', error);
         }
     },
 
     actions: {
         async deleteSpeaker(speaker) {
             try {
-                await this.get('dataService').deleteSpeaker(speaker);
-                this.send('refreshSpeakers');
+                await speaker.destroyRecord();
             } 
             catch (error) {
-                this.send('error', new Error('Connection failed'));
+                this.send('error', error);
             }
         },
         

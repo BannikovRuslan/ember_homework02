@@ -5,7 +5,7 @@ import EmberObject from '@ember/object';
 export default Route.extend({
     dataService: service('data'),
 
-    model({ id }) {
+    async model({ id }) {
         if (id === "new") {
             return EmberObject.create({
             "cover": "",
@@ -17,6 +17,13 @@ export default Route.extend({
             "description":"https://empty.com"
         })
         }
-        else return this.get("dataService").getBook(id);
+        else {
+            let data = await this.get('store').findRecord('book', id);
+            let tags = data.get('tags');
+            if (typeof tags == 'undefined') {
+                data.set('tags', []);
+            }
+            return data
+        }
     },
 });

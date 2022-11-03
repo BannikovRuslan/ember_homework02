@@ -24,10 +24,6 @@
   "books": [
     {
       "id": 1,
-      "o": {
-        "t": 1,
-        "m": "test"
-      },
       "cover": "/uploads/cover_stories-1666268686848.webp",
       "title": "The Stories about Sherlock Holmes",
       "author": "Arthur Doyle",
@@ -42,10 +38,6 @@
     },
     {
       "id": 2,
-      "o": {
-        "t": 1,
-        "m": "test"
-      },
       "cover": "/uploads/cover_wine-1666268665562.webp",
       "title": "The Dandelion Wine",
       "author": "Ray Bradbury",
@@ -59,10 +51,6 @@
     },
     {
       "id": 3,
-      "o": {
-        "t": 1,
-        "m": "test"
-      },
       "cover": "/uploads/cover_basker-1666268697099.webp",
       "title": "The Hound of the Baskervilles",
       "author": "Arthur Doyle",
@@ -91,7 +79,7 @@
     {
       "title": "Test",
       "author": "Testov Testovich",
-      "pages": "150",
+      "pages": 151,
       "cover": "/uploads/book-cover-1666615185931.jpg",
       "tags": [
         "test",
@@ -114,6 +102,30 @@
       "description": "https://empty.comere",
       "rating": 0,
       "id": 6
+    },
+    {
+      "title": "test14",
+      "author": "Tesovichus14",
+      "pages": 14,
+      "cover": "/uploads/cover_wine-1667224812523.webp",
+      "tags": [
+        "test14"
+      ],
+      "description": "https://empty.com14",
+      "rating": 0,
+      "id": 14
+    },
+    {
+      "title": "test13",
+      "author": "Testovichus13",
+      "pages": 13,
+      "cover": "/uploads/cover_wine-1667224812523.webp",
+      "description": "https://empty.com",
+      "rating": 0,
+      "id": 16,
+      "tags": [
+        "test13"
+      ]
     }
   ],
   "speakers": [
@@ -163,6 +175,13 @@
       "lastName": "Dolgorukov",
       "middleName": "Anatolievich",
       "id": 7
+    },
+    {
+      "lastName": "ewrewGO",
+      "firstName": "GOoo",
+      "middleName": "rewrewr",
+      "foto": null,
+      "id": 8
     }
   ]
 }

@@ -8,9 +8,6 @@ export default Route.extend({
         search: {
             refreshModel: true
         },
-        tags: {
-            refreshModel: true
-        }
     },
 
     async model() {

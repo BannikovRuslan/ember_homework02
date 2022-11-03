@@ -8,7 +8,7 @@
         <div><strong>Количество страниц</strong>: {{book.pages}}</div>
         <div><strong>Теги</strong>: 
         {{#each (prepare-tags book.tags) as |tag|}}
-            {{#link-to "books" (query-params tags=tag) class="tag-link"}}
+            {{#link-to "books" (query-params tags=(clean-tags tag)) class="tag-link"}}
                 <span class="small">{{tag}}</span>
             {{/link-to}}
         {{/each}}

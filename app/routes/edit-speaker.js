@@ -14,6 +14,8 @@ export default Route.extend({
             "foto": "/images/speaker.jpg"
         })
         }
-        else return this.get("dataService").getSpeaker(id);
+        else {
+            return this.get('store').findRecord('speaker', id);
+        }
     },
 });

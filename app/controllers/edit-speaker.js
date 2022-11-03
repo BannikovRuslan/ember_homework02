@@ -1,20 +1,23 @@
 import Controller from '@ember/controller';
-import { inject as service } from '@ember/service';
+
 
 export default Controller.extend({
-    dataService: service('data'),
     actions: {
         async saveSpeaker(speaker) {
             try {
+                let savedSpeaker;
                 if (typeof speaker.id == "undefined") {
-                    await this.get("dataService").createSpeaker(speaker);
+                    savedSpeaker = this.store.createRecord('speaker', speaker);
                 } else {
-                    await this.get("dataService").updateSpeaker(speaker);
+                    this.get('model').setProperties(speaker);
+                    savedSpeaker = this.get('model');
                 }
-                
+
+                await savedSpeaker.save();
                 this.transitionToRoute('speakers'); 
+
             } catch (error) {
-                this.send('error', new Error('Connection failed'));
+                this.send('error', error);
             }                    
         },
     }

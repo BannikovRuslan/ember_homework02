@@ -1,6 +1,7 @@
 import Controller from '@ember/controller';
 import { get, set } from '@ember/object';
 import { inject as service } from '@ember/service';
+import ENV from 'ember-homework02/config/environment';
 
 export default Controller.extend({
   dataService: service('data'),
@@ -15,27 +16,56 @@ export default Controller.extend({
       e.preventDefault();
       //console.log(get(this, 'tags'));
       try {
+        
         set(this, 'isUploadingFile', true);
-        const uploadData = get(this, 'uploadData');
-        await this.get("dataService").saveBook({
+
+        const bookID = this.get('model.id');
+
+        const book = {
           title: this.get('model.title'),
           author: this.get('model.author'),
-          pages: this.get('model.pages'),
+          pages: parseInt(this.get('model.pages')),
           cover: this.get('model.cover'),
-          tags: get(this, 'tags'),
+          tags: typeof get(this, 'tags') == "undefined" ? this.get('model.tags'): get(this, 'tags'),
           description: this.get('model.description'),
-          rating: this.get('model.rating')
-        }, uploadData, this.get('model.id'));
+          rating: parseFloat(this.get('model.rating'))
+        }
 
+        const uploadData = get(this, 'uploadData');
+
+        let savedBook;
+        if (typeof bookID == "undefined") {
+          savedBook = this.store.createRecord('book', book);
+        }
+        else {
+          this.get('model').setProperties(book);
+          savedBook = this.get('model');
+        }
+
+        if (!uploadData) {
+          await savedBook.save();
+          set(this, 'isUploadingFile', false);
+          this.transitionToRoute('books');
+        }
+
+        uploadData.url = `${ENV.fileUploadURL}`;
+        await uploadData.submit().done(async (result/*, textStatus, jqXhr*/) => {
+            // const dataToUpload = {
+            //   entityName: 'books',
+            //   id: savedBook.id,
+            //   fileName: result.filename
+            // };
+
+            savedBook.set('cover', '/uploads/' + result.filename) 
+            await savedBook.save();
+            
+        }); 
         set(this, 'isUploadingFile', false);
         this.transitionToRoute('books');
       } catch (error) {
-        this.send('error', new Error('Connection failed'));
+        this.send('error', error);
       }
-
-      
     },
-
     changeUploadData(uploadData) {
       set(this, 'uploadData', uploadData);
     }
