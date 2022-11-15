@@ -24,7 +24,7 @@ export default Route.extend({
             return data
         }
         catch (error) {
-            this.send('error', new Error('Connection failed'));
+            this.send('error', error);
         }
     },
 

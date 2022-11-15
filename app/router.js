@@ -14,6 +14,9 @@ Router.map(function() {
   this.route('create-book');
   this.route('404', { path: '*path'});
   this.route('error', { path: '/:error'});
+  this.route('meetings');
+  this.route('edit-meeting', { path: '/edit-meeting/:id'});
+  this.route('edit-report', { path: '/edit-report/:report_id'});
 });
 
 export default Router;

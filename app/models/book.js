@@ -8,4 +8,6 @@ export default DS.Model.extend({
     tags: DS.attr(''),
     description: DS.attr('string'),
     rating: DS.attr('number'),
+
+    presentations: DS.hasMany('presentation'),
 });

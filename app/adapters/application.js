@@ -13,13 +13,13 @@ export default DS.JSONAPIAdapter.extend({
 
   buildURL(modelName, id, snapshot, requestType, /*query*/) {
     let url = this._super(...arguments);
-    if (modelName === 'author' && requestType === 'findRecord' && id) {
-      url += '?_embed=books';
-    }
+    // if (modelName === 'book' && requestType === 'findRecord' && id) {
+    //   url += '?_embed=books';
+    // }
 
-    //f (modelName === 'book' && requestType === 'findRecord' && id) {
-    //  url += '?_embed=reviews';
-    //}
+    if (modelName === 'meeting') {
+      url += '?_embed=presentations';
+    }
 
     return url;
   }

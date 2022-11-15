@@ -10,6 +10,7 @@ export default Component.extend({
                 firstName: this.get('firstName'),
                 lastName: this.get('lastName'),
                 middleName: this.get('middleName'),
+                foto: "/images/speaker.jpg",
             });
         }
     },

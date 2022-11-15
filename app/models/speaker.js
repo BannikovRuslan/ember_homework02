@@ -5,4 +5,6 @@ export default DS.Model.extend({
     firstName: DS.attr("string"),
     middleName: DS.attr("string"),
     foto: DS.attr("string"),
+
+    presentations: DS.hasMany('presentation'),
 });

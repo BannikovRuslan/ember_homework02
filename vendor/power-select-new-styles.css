@@ -1,0 +1,11 @@
+.power-select-styles {
+    font-size: 1.25rem;
+}
+
+.ember-power-select-selected-item, .ember-power-select-placeholder {
+    margin-left: 0 !important;   
+}
+
+.ember-power-select-selected-item{
+    color: #495057;
+}

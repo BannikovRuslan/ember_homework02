@@ -1,0 +1,17 @@
+<div class="power-select-styles" id="inputSpeaker">
+{{#power-select data-size="5" class="form-control form-control-lg" 
+    options=dataItems
+    selected=dataItem
+    onchange=(action "dataSelected")
+    matcher=(action "dataMatched")
+    noMatchesMessage="Ничего не найдено"
+    placeholder=placeholderData
+    allowClear=true
+    as |data|
+}}  
+    {{show-object-data data objectFields}}
+{{/power-select}}
+</div>
+
+
+{{!-- <div class="selectpicker form-control form-control-lg" id="input-speaker" data-live-search="true" ></div> --}}
