@@ -12,12 +12,12 @@
         </div>
         <div class="col-md-3 align-top">
             <h5>Спикер</h5>
-            {{data-selector dataItem=speaker dataItems=model.speakers objectFields="lastName, firstName, middleName"
+            {{data-selector dataItem=model.speaker dataItems=model.speakers objectFields="lastName, firstName, middleName"
                 placeholderData="Спикер..." wrapperClass="power-select-styles"}}
         </div>
         <div class="col-md-3">
             <h5>Книга</h5>
-            {{data-selector dataItem=book dataItems=model.books objectFields="title"
+            {{data-selector dataItem=model.book dataItems=model.books objectFields="title"
                 placeholderData="Книга..." wrapperClass="power-select-styles"}}
         </div>
         <div class="col-md-3">
@@ -25,7 +25,7 @@
             <div class="form-group py-2 my-0">
                 <div class="datepicker date input-group p-0 w-100">
                     {{bootstrap-datepicker placeholder="Дата..." class="form-control" id="meetingDateFilter"
-                    value=selectedDate
+                    value=model.selectedDate
                     autoclose=true
                     clearBtn=true
                     orientation="bottom"
@@ -49,10 +49,9 @@
         <div class="col-md-auto text-right col-filter">
             {{#link-to "meetings" 
                 (query-params   page=1 
-                                speakerId=speaker.id 
-                                bookId=book.id 
-                                athorId=athor.id 
-                                date=(if selectedDate (moment-format selectedDate 'YYYY-MM-DD'))) 
+                                speakerId=model.speaker.id 
+                                bookId=model.book.id 
+                                date=(if model.selectedDate (moment-format model.selectedDate 'YYYY-MM-DD') "")) 
                 tagName="button" class="btn btn-outline-primary my-2"}}
                 <svg viewBox="0 0 16 16" class="bi bi-funnel card-button" fill="currentColor"
                     xmlns="http://www.w3.org/2000/svg">
@@ -61,7 +60,7 @@
                 </svg>
             {{/link-to}}
             <button type="button" class="btn btn-outline-secondary my-2" 
-                disabled={{if speaker false (if book false (if selectedDate false true))}}
+                disabled={{if model.speaker false (if model.book false (if model.selectedDate false true))}}
                 onclick={{action "clearFilter"}}>
                 <svg viewBox="0 0 16 16" class="bi bi-x card-button" fill="currentColor"
                     xmlns="http://www.w3.org/2000/svg">

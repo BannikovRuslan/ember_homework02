@@ -167,23 +167,49 @@
   "meetings": [
     {
       "date": "2022-11-21T16:24:38.521Z",
-      "id": 1
+      "id": 1,
+      "presentations": []
     },
     {
       "date": "2022-11-23T00:00:00.000Z",
-      "id": 2
+      "id": 2,
+      "presentations": [
+        {
+          "date": "2022-11-23T00:00:00.000Z",
+          "rating": 3,
+          "urlPresentation": "https://presentation.com",
+          "urlVideo": "https://presentation-video.com",
+          "review": "Это делает предлагаемый здесь генератор единственным настоящим Lorem Ipsum генератором.",
+          "speakerId": 2,
+          "bookId": 3,
+          "meetingId": 2,
+          "id": 3
+        }
+      ]
     },
     {
       "date": "2022-11-24T00:00:00.000Z",
-      "id": 3
+      "id": 3,
+      "presentations": []
     },
     {
       "date": "2022-11-25T00:00:00.000Z",
-      "id": 4
+      "id": 4,
+      "presentations": []
     },
     {
       "date": "2022-11-23T00:00:00.000Z",
-      "id": 5
+      "id": 5,
+      "presentations": []
+    },
+    {
+      "date": "2022-11-23T00:00:00.000Z",
+      "id": 6,
+      "presentations": []
+    },
+    {
+      "date": "2022-12-01T00:00:00.000Z",
+      "id": 8
     }
   ],
   "presentations": [
@@ -274,6 +300,39 @@
       "bookId": 5,
       "meetingId": 5,
       "id": 8
+    },
+    {
+      "date": "2022-11-26T11:03:49.858Z",
+      "rating": 4,
+      "urlPresentation": "https://presentation.com",
+      "urlVideo": "https://presentation-video.com",
+      "review": "настоящим Lorem Ipsum генератором.",
+      "speakerId": 4,
+      "bookId": 16,
+      "meetingId": 6,
+      "id": 9
+    },
+    {
+      "date": "2022-11-26T11:03:49.858Z",
+      "rating": 2,
+      "urlPresentation": "",
+      "urlVideo": "https://presentation-video.com",
+      "review": "Есть.",
+      "speakerId": 6,
+      "bookId": 2,
+      "meetingId": 6,
+      "id": 10
+    },
+    {
+      "date": "2022-12-01T00:00:00.000Z",
+      "rating": 2,
+      "urlPresentation": "https://presentation.com",
+      "urlVideo": "https://presentation-video.com",
+      "review": "инают латынь. Если вам нужен Lorem Ipsum для серьёзного проекта, вы наверняка не хотите какой-нибудь шутки, скрытой в середине абзаца. Также все другие известные генераторы Lorem Ipsum используют один и тот же текст, который они просто повторяют, пока не достигнут нужный объём. Это делает предлагаемый здесь генератор единственным настоящим Lorem Ipsum генератором.",
+      "speakerId": 5,
+      "bookId": 3,
+      "meetingId": 8,
+      "id": 13
     }
   ]
 }

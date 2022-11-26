@@ -7,9 +7,8 @@ export default Controller.extend({
     queryParams: ['speakerId', 'bookId', 'date', 'page'],
     speakerId: '',
     bookId: '',
-    date:'',
+    date: '',
     page: 1,
-    
 
     pages: computed('model.meetings.meta.total', function () {
         const MAX_COUNT_PAGES = 3; 
@@ -59,38 +58,25 @@ export default Controller.extend({
             let data = await this.store.query('presentation', { meetingId: meetingId });
             return data;
         },
+
         clearFilter() {
-            this.set('speaker', "");
-            this.set('book', "");
-            this.set('date', "");
+            this.set('speakerId', '');
+            this.set('bookId', '');
+            this.set('date', '');
         },
+        
         async deleteMeeting(meeting) {
             try {
-                // await meeting.presentations.forEach(presentation => {
-                //     presentation.destroyRecord();
-                // });
                 
-                //let presentations = this.meeting.presentations.toArray();
-
                 await meeting.destroyRecord();
                 meeting.unloadRecord();
                 if (this.get('model.meetings.content').length == 0) {
-                    this.send('refreshMeetings');
-                    // if (this.get('page') >= 1) {
-                    //     this.send('refreshMeetings');
-                    // }
-                    // else {
-                    //     this.transitionToRoute('meetings', {queryParams: { page: this.get('page') }});
-                    // }
-                    
+                    this.send('refreshMeetings');                    
                 }                
             }
             catch (error) {
                 this.send('error', error);
-            }
-            
+            }            
         },
-    },
-
-    
+    },    
 });

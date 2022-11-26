@@ -26,14 +26,10 @@ export default Route.extend({
             _limit: PER_PAGE,
         };
 
-
         try {
             this.set('isLoading', true);
 
             if (speakerId || date || bookId) {
-                //this.controller.set('tagsBook', tags);
-                //this.controller.set('page', 1);
-                //query._page = 1;
                 if (bookId) {
                     query.book = parseInt(bookId);
                 }
@@ -43,16 +39,8 @@ export default Route.extend({
                 if (date) {
                     query.date = date;
                 }
-                // const data = this.store.query('meeting', { q: [speaker, book], tags_like: date });
-                // this.set('isLoading', false);
-                // return data
+
             }
-        
-            // if (query._page < 1) {
-            //     this.controller.transitionToRote('meetings', {queryParams: { page: 1 }});
-            //     this.set('isLoading', false);
-            //     return {};
-            // }
 
             const data = await this.store.query('meeting', query);
 
@@ -65,7 +53,6 @@ export default Route.extend({
             }
             
             this.set('isLoading', false);
-            // return data
 
             let allData =  RSVP.hash({
                 speakers: await this.store.findAll('speaker'),
@@ -73,7 +60,9 @@ export default Route.extend({
             });
 
             allData._result.meetings = data;
-            //allData.controller.selectedDate = new Date(date);
+            allData._result.speaker = speakerId ? allData._result.speakers.findBy('id', speakerId) : null;
+            allData._result.book = bookId ? allData._result.books.findBy('id', bookId) : null;
+            allData._result.selectedDate = date ? new Date(date): null;
             return allData
 
         }

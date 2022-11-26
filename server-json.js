@@ -106,22 +106,23 @@ server.use(responseInterceptor);
 server.use((request, response, next) => {
   console.log(request.query);
   const speakerId = Number(request.query.speaker);  const bookId = Number(request.query.book);  const meetingDate = request.query.date;
-  
-  console.log(speakerId);  console.log(bookId);  console.log(meetingDate);
+  const pageLimit = Number(request.query._limit); const pageNumber = Number(request.query._page);
+
+  console.log("speakerId = ", speakerId);  console.log("bookId = ", bookId);  console.log("meetingDate = ", meetingDate);
+  console.log("pageLimit = ", pageLimit);  console.log("pageNumber = ", pageNumber);
 
   // const author = Number(request.query.author);
   if (request.method === 'GET' && request.path === '/meetings' 
       && (!Number.isNaN(speakerId) || !Number.isNaN(bookId) || typeof meetingDate != 'undefined')) {
     let meetings = [];
     if (typeof meetingDate == 'undefined') {
-      meetings = router.db.get('meetings');
+      meetings = router.db.get('meetings').value();
     } else {
       meetings = router.db.get('meetings').filter((meeting) => meeting.date.indexOf(meetingDate) >= 0).value();
     }
 
     meetings = meetings.map((meeting) => 
       {
-        console.log("meeting = ", meeting);
         meeting.presentations = router.db.get('presentations').filter((p) =>  
             { 
               return p.meetingId === meeting.id 
@@ -132,14 +133,15 @@ server.use((request, response, next) => {
       });
     
     meetings = meetings.filter((meeting) => meeting.presentations.length > 0);
+    const total = meetings.length;
+    const endMeeeting = pageLimit * pageNumber - 1; 
+    const startMeeting = pageLimit * pageNumber - pageLimit;
+    meetings = meetings.slice(startMeeting, endMeeeting + 1);
+    // console.log(meetings);
 
-    // const books = router.db.get('books').filter((b) => b.authorId === author).map((book) => {
-    //   book.reviews = router.db.get('reviews').filter((r) => r.bookId === book.id).value();
-
-    //   return book;
-    // }).value();
-
-    // response.json(books);
+    response.header('X-Total-Count', total);
+    response.header('Access-Control-Expose-Headers', 'X-Total-Count');
+    
     response.json(meetings);
   } else {
     next();
