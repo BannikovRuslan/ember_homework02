@@ -28,6 +28,7 @@ export default Controller.extend({
         async deleteSpeaker(speaker) {
             try {
                 await speaker.destroyRecord();
+                speaker.unloadRecord();
             } 
             catch (error) {
                 this.send('error', error);

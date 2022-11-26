@@ -5,10 +5,8 @@ export default Route.extend({
     async model({ id }) {
         if (id === "new") {
             return EmberObject.create({
-            "date": "2022-11-10",
-            "presentations": {
-
-            }
+            "date": new Date(),
+            "presentations": {}
         })
         }
         else {

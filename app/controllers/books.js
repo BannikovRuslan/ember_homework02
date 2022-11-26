@@ -15,6 +15,7 @@ export default Controller.extend({
                 //this.transitionToRoute("books", {queryParams: { search: '#' }});
 
                 await book.destroyRecord();
+                book.unloadRecord();
                 // this.get('model').findRecord('book', book.get('id'), {backgroundReload: false}).then(function(book) {
                 //     book.destroyRecord();
                 // });

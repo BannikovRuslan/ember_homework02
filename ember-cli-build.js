@@ -39,13 +39,13 @@ module.exports = function(defaults) {
   // app.import('node_modules/blueimp-file-upload/js/jquery.fileupload.js');
 
   const jsFiles = funnel('vendor', {
-    include: ['popper.min.js', 'popper.min.js.map','tagsinput.js', 'jquery-ui.js'],
+    include: ['popper.min.js', 'popper.min.js.map', 'tagsinput.js', 'jquery-ui.js', 'bootstrap-datepicker.ru.min.js'],
     destDir: 'js'
   });
 
   // const jsBootsrapFiles = funnel('vendor/bootstrap', {
-  //   include: ['*.js','*.map'],
-  //   destDir: 'js'
+  //   include: ['bootstrap-datepicker.min.js', 'bootstrap-datepicker.ru.min.js'],
+  //   destDir: 'js/bootstrap'
   // });
 
   const jqueryFiles = funnel('node_modules/blueimp-file-upload/js', {

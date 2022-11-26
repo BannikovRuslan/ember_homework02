@@ -1,7 +1,5 @@
 import Controller from '@ember/controller';
 import { computed } from '@ember/object';
-import EmberObject from '@ember/object';
-import { Alert } from 'bootstrap';
 
 export default Controller.extend({
 

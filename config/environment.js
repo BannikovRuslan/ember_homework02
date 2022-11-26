@@ -7,6 +7,9 @@ module.exports = function(environment) {
     rootURL: '/',
     backendURL: 'http://localhost:3000',
     locationType: 'auto',
+    bootstrapDatepicker: {
+      includeLocales: [ 'ru' ]
+    },
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build

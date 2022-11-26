@@ -1,20 +1,23 @@
 import DS from 'ember-data';
 import { inject as service } from '@ember/service';
+import moment from 'moment';
 
 export default DS.Transform.extend({
-  moment: service(),
+  // moment: service(),
   deserialize(serialized) {
-    let date = this._super(serialized);
+    let date = serialized ? moment(serialized).toDate() : null;
     if (date instanceof Date && !isNaN(date)) {
-      let formattedDate = this.get('moment').moment(date).format('DD-MM-YYYY');
-      return formattedDate;
+      //let formattedDate = moment(date).format('DD.MM.YYYY');
+      return date;
     }
 
     return null;
   },
 
   serialize(deserialized) {
-    let deserializedDate = deserialized ? this.get('moment').moment(deserialized).toDate() : null;
-    return this._super(deserializedDate);
+    let deserializedDate = deserialized ? moment(deserialized).toDate() : "";
+    //let deserializedDate = deserialized ? moment(deserialized).toString() : "";
+    //return this._super(deserializedDate);
+    return deserializedDate;
   }
 });
