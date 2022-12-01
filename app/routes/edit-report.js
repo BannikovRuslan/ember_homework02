@@ -1,10 +1,16 @@
 import Route from '@ember/routing/route';
 import EmberObject from '@ember/object';
-//import RSVP from 'rsvp';
+import { inject as service } from '@ember/service';
 
 
 export default Route.extend({
-    
+    session: service(),
+    beforeModel() {
+        if (!this.session.isAuthenticated) {
+            this.transitionTo('login');
+        }
+    },
+
     async model({ report_id, meetingId }) {
         let data;
         if (report_id === "new") {

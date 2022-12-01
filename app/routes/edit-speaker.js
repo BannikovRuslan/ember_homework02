@@ -4,6 +4,12 @@ import EmberObject from '@ember/object';
 
 export default Route.extend({
     dataService: service('data'),
+    session: service(),
+    beforeModel() {
+        if (!this.session.isAuthenticated) {
+            this.transitionTo('login');
+        }
+    },
 
     model({ id }) {
         if (id === "new") {

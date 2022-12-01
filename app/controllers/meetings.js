@@ -1,9 +1,11 @@
 import Controller from '@ember/controller';
 import { computed } from '@ember/object';
+import { inject as service } from '@ember/service';
 
 export const PER_PAGE = 2;
 
 export default Controller.extend({
+    session: service(),
     queryParams: ['speakerId', 'bookId', 'date', 'page'],
     speakerId: '',
     bookId: '',
@@ -40,7 +42,7 @@ export default Controller.extend({
 
     isLastPage: computed('model.meetings.meta.total', function () {
         const total = Number(this.get('model.meetings.meta.total'));
-        return this.get('page') >= Math.ceil(total / PER_PAGE);
+        return this.get('page') >= Math.ceil(total / PER_PAGE) || Number.isNaN(total);
     }),
 
     nextPage: computed('model.meetings.meta.total', function () {

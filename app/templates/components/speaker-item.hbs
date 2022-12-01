@@ -4,6 +4,7 @@
         <div class="card-body">
             <h5 class="card-title">{{speaker.lastName}} {{speaker.firstName}} {{speaker.middleName}}</h5>
         </div>
+        {{#if session.isAuthenticated}}
         <div class="card-footer">
             <div class="row">
                 <div class="col">
@@ -28,5 +29,6 @@
                 </div>
             </div>
         </div>
+        {{/if}}
     </div>
 </div>

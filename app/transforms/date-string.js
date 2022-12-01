@@ -1,5 +1,4 @@
 import DS from 'ember-data';
-import { inject as service } from '@ember/service';
 import moment from 'moment';
 
 export default DS.Transform.extend({
