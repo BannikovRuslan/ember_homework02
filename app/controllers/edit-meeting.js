@@ -1,4 +1,5 @@
 import Controller from '@ember/controller';
+import { PER_PAGE } from '../controllers/meetings';
 
 export default Controller.extend({
     actions: {
@@ -33,7 +34,8 @@ export default Controller.extend({
                     });
                 }
                 if (typeof meeting.id != "undefined") {
-                    this.transitionToRoute('meetings', { queryParams: { page: meeting.id } });
+                    const meetings = await this.store.findAll('meeting', {reload: true});
+                    this.transitionToRoute('meetings', { queryParams: { page: Math.ceil(meetings.length / PER_PAGE), bookId:"", speakerId:"", date:""} });
                 }
                 
             } catch (error) {

@@ -57,18 +57,26 @@ export default Route.extend({
             let allData =  RSVP.hash({
                 speakers: await this.store.findAll('speaker'),
                 books: await this.store.findAll('book'),
+                meetings: data,
+                selectedDate: date ? new Date(date): null,
+                speakerId,
+                bookId,
             });
 
-            allData._result.meetings = data;
-            allData._result.speaker = speakerId ? allData._result.speakers.findBy('id', speakerId) : null;
-            allData._result.book = bookId ? allData._result.books.findBy('id', bookId) : null;
-            allData._result.selectedDate = date ? new Date(date): null;
             return allData
 
         }
         catch (error) {
             this.send('error', error);
         }
+    },
+
+    afterModel(model, transition) {
+        const updatedModel = Object.assign(model, {
+            speaker: model.speakerId ? model.speakers.findBy('id', model.speakerId) : null,
+            book: model.bookId ? model.books.findBy('id', model.bookId) : null,
+        });
+        return updatedModel;
     },
 
     actions : {

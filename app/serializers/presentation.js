@@ -1,7 +1,7 @@
 import DS from 'ember-data';
 import ApplicationSerializer from './application';
 
-export default ApplicationSerializer.extend(DS.EmbeddedRecordsMixin, {
+export default ApplicationSerializer.extend({
     
     normalize(model, hash) {
         hash = this._super(...arguments);

@@ -13,8 +13,9 @@ export default Route.extend({
 
     async model({ report_id, meetingId }) {
         let data;
+        let meeting = meetingId === "new" ? null : await this.get('store').findRecord('meeting', meetingId);
         if (report_id === "new") {
-            const currentDate = meetingId === "new" ? new Date() : (await this.get('store').findRecord('meeting', meetingId)).date;
+            const currentDate = meetingId === "new" ? new Date() : meeting.date;
             data = EmberObject.create({
             "date":  currentDate,
             "rating": 0,
@@ -26,7 +27,7 @@ export default Route.extend({
         else {
             data = await this.get('store').findRecord('presentation', report_id);
         }
-
+        data.meeting = meeting;
         return data;
         // return RSVP.hash({
         //     report: data,

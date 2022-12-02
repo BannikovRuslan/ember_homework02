@@ -40,7 +40,7 @@ export default Controller.extend({
                     let meetingData = this.get('store').createRecord('meeting', newMeeting)
                     meeting = await meetingData.save();
                 } else {
-                    meeting = await this.get('store').findRecord('meeting', this.get('meetingId'));
+                    meeting = this.model.meeting;//await this.get('store').findRecord('meeting', this.get('meetingId'));
                 }
 
                 if (typeof meeting.id != "undefined") {
