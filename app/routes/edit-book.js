@@ -19,7 +19,7 @@ export default Route.extend({
             "pages": "",
             "tags" : [],
             "rating": 0,
-            "description":"https://empty.com"
+            "description":""
         })
         }
         else {
@@ -30,5 +30,10 @@ export default Route.extend({
             }
             return data
         }
+    },
+
+    setupController(controller, model) {
+        this._super(...arguments);
+        controller.set('inputErrors', false);
     },
 });

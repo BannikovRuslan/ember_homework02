@@ -25,8 +25,11 @@ export default Route.extend({
             this.get('currentUser').load();
         }
     },
-    
+
     actions: {
+        refreshSessionAuthenticated(){
+            this.sessionAuthenticated();
+        },
         error(error, transition) {
             if (transition) {
                 transition.abort();

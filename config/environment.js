@@ -34,7 +34,9 @@ module.exports = function(environment) {
         siteKey: '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI',
       },
     },
-
+    i18n: {
+      defaultLocale: 'en'
+    }
   };
   ENV.fileUploadURL = ENV.backendURL + '/FileUpload';
 

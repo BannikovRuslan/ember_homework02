@@ -18,10 +18,10 @@ export default Route.extend({
             const currentDate = meetingId === "new" ? new Date() : meeting.date;
             data = EmberObject.create({
             "date":  currentDate,
-            "rating": 0,
+            "rating": "",
             "urlPresentation": "", 
-            "urlVideo": "https://presentation-video.com",
-            "review": "Есть много вариантов Lorem Ipsum, но большинство из них имеет не всегда приемлемые модификации, например, юмористические вставки или слова, которые даже отдалённо не напоминают латынь. Если вам нужен Lorem Ipsum для серьёзного проекта, вы наверняка не хотите какой-нибудь шутки, скрытой в середине абзаца. Также все другие известные генераторы Lorem Ipsum используют один и тот же текст, который они просто повторяют, пока не достигнут нужный объём. Это делает предлагаемый здесь генератор единственным настоящим Lorem Ipsum генератором."
+            "urlVideo": "",
+            "review": ""
         })
         }
         else {
@@ -35,5 +35,9 @@ export default Route.extend({
         //     books: await this.store.findAll('book'),
         // });
     },
-
+    
+    setupController(controller, model) {
+        this._super(...arguments);
+        controller.set('inputErrors', false);
+    },
 });

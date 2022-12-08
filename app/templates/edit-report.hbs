@@ -32,9 +32,16 @@
         <div class="form-group row">
             <label for="inputMark" class="col-sm-2 col-form-label text-right">Оценка книги</label>
             <div class="col-sm-10">
-                {{input value=model.rating type="number" min="1" max="5" class="form-control form-control-lg"
+                {{input value=model.rating type="number" class="form-control form-control-lg"
                 id="inputMark"
                 placeholder="Введите оценку"}}
+                {{#if inputErrors}}
+                    {{#if (v-get this 'presentation.rating' 'isInvalid')}}
+                    <span class="text-danger">
+                        {{v-get this 'presentation.rating' 'message'}}
+                    </span>
+                    {{/if}}
+                {{/if}}
             </div>
         </div>
         <div class="form-group row">
@@ -57,6 +64,13 @@
             <div class="col-sm-10">
                 {{data-selector dataItem=model.book dataItems=booksData objectFields="author, title"
                 placeholderData="Выберите книгу..." wrapperClass="power-select-styles-125"}}
+                {{#if inputErrors}}
+                    {{#if (v-get this 'presentation.book' 'isInvalid')}}
+                    <span class="text-danger">
+                        {{v-get this 'presentation.book' 'message'}}
+                    </span>
+                    {{/if}}
+                {{/if}}
             </div>
         </div>
         <div class="form-group row">
@@ -64,6 +78,13 @@
             <div class="col-sm-10">
                 {{data-selector dataItem=model.speaker dataItems=speakersData objectFields="firstName, lastName"
                 placeholderData="Выберите спикера..." wrapperClass="power-select-styles-125"}}
+                {{#if inputErrors}}
+                    {{#if (v-get this 'presentation.speaker' 'isInvalid')}}
+                    <span class="text-danger">
+                        {{v-get this 'presentation.speaker' 'message'}}
+                    </span>
+                    {{/if}}
+                {{/if}}
             </div>
         </div>
 

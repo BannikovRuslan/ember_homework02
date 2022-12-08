@@ -1,10 +1,30 @@
 import Controller from '@ember/controller';
 import { computed } from '@ember/object';
+import { validator, buildValidations } from 'ember-cp-validations';
 
-export default Controller.extend({
+const Validations = buildValidations({
+    'presentation.book': [
+        validator('presence', true),
+    ],
+    'presentation.speaker': [
+        validator('presence', true),
+    ],
+    'presentation.rating': [
+        validator('number', {
+          integer: true,
+          positive: true,
+          gte: 0,
+          lte: 5
+        }),
+    ],
+});
+
+
+export default Controller.extend(Validations, {
 
     queryParams: ['meetingId'],
     meetingId: "new",
+    isFormValid: computed.alias('validations.isValid'),
     
     speakersData: computed('', async function() {
         const data = await this.store.findAll('speaker');
@@ -19,16 +39,6 @@ export default Controller.extend({
     actions: {
         async savePresentation(event) {
             event.preventDefault();
-
-            if (typeof this.get('model.book.id') == "undefined") {
-                alert("Укажите книгу!");
-                return;
-            }
-
-            if (typeof this.get('model.speaker.id') == "undefined") {
-                alert("Укажите докладчика!");
-                return;
-            }
 
             try {
                 let meeting;
@@ -46,7 +56,7 @@ export default Controller.extend({
                 if (typeof meeting.id != "undefined") {
                     let presentationData;
                     if (typeof this.get('model.id') == "undefined") {
-                        const presentation = {
+                        const newPresentation = {
                             "date": this.get('model.date'),
                             "rating": parseInt(this.get('model.rating')),
                             "urlPresentation": this.get('model.urlPresentation'),
@@ -56,13 +66,17 @@ export default Controller.extend({
                             "meeting": meeting,
                             "book": this.get('model.book'),
                         }
-                        presentationData = this.get('store').createRecord('presentation', presentation);
-                    } else {
-                        
+                        presentationData = this.get('store').createRecord('presentation', newPresentation);
+                    } else {                      
                         presentationData = this.get('model');
                     }
-                    await presentationData.save();
-                    this.transitionToRoute("edit-meeting", meeting.id); 
+                    this.set('presentation', presentationData);
+                    this.set('inputErrors', !this.get('isFormValid'));
+                    if (this.get('isFormValid')) {
+                        await presentationData.save();
+                        this.transitionToRoute("edit-meeting", meeting.id); 
+                    }
+                    
                 }
 
             } catch (error) {
@@ -70,6 +84,14 @@ export default Controller.extend({
             }                    
         },
 
+    },
+
+    didReceiveAttrs() {
+        this._super(...arguments);
+        this.setProperties({
+            inputErrors: false,
+            presentation: {}
+        });
     }
 
 });

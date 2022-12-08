@@ -5,18 +5,39 @@
             <label for="inputTitle" class="col-sm-2 col-form-label text-right">Название</label>
             <div class="col-sm-10">
                 {{input type="text" placeholder="Полное название книги" value=model.title class="form-control form-control-lg" id="inputTitle"}}
+                {{#if inputErrors}}
+                    {{#if (v-get this 'book.title' 'isInvalid')}}
+                    <span class="text-danger">
+                        {{v-get this 'book.title' 'message'}}
+                    </span>
+                    {{/if}}
+                {{/if}}
             </div>
         </div>
         <div class="form-group row">
             <label for="inputAuthor" class="col-sm-2 col-form-label text-right">Автор</label>
             <div class="col-sm-10">
                 {{input type="text" placeholder="Фамилия И.О. автора" value=model.author class="form-control form-control-lg" id="inputAuthor"}}
+                {{#if inputErrors}}
+                    {{#if (v-get this 'book.author' 'isInvalid')}}
+                    <span class="text-danger">
+                        {{v-get this 'book.author' 'message'}}
+                    </span>
+                    {{/if}}
+                {{/if}}
             </div>
         </div>
         <div class="form-group row">
             <label for="inputPagesCount" class="col-sm-2 col-form-label text-right">Объем</label>
             <div class="col-sm-10">
                 {{input type="number" placeholder="Количество страниц книги" value=model.pages class="form-control form-control-lg" id="inputPagesCount"}}
+                {{#if inputErrors}}
+                    {{#if (v-get this 'book.pages' 'isInvalid')}}
+                    <span class="text-danger">
+                        {{v-get this 'book.pages' 'message'}}
+                    </span>
+                    {{/if}}
+                {{/if}}
             </div>
         </div>
         <div class="form-group row">
@@ -35,12 +56,19 @@
             <div class="col-sm-10">
                 <!-- <input type="text" class="form-control" id="inputPatronymic" placeholder="#Теги через запятую"> -->
                 {{input-tags tags=model.tags onChange=(action "changeTags")}}
+                {{#if inputErrors}}
+                    {{#if (v-get this 'book.tags' 'isInvalid')}}
+                    <span class="text-danger">
+                        {{v-get this 'book.tags' 'message'}}
+                    </span>
+                    {{/if}}
+                {{/if}}
             </div>
         </div>
         <div class="form-group row">
             <div class="col-12 text-right">
                 <button type="submit" class="btn btn-primary btn-lg">Сохранить</button>
-                {{#link-to "books" tagName="button" type="submit" class="btn btn-outline-secondary btn-lg"}}
+                {{#link-to "books" tagName="button" class="btn btn-outline-secondary btn-lg"}}
                 Отмена
                 {{/link-to}}
             </div>

@@ -1,8 +1,30 @@
 import Controller from '@ember/controller';
 import fetch from 'fetch';
 import ENV from '../config/environment';
+import { computed } from '@ember/object';
+import { inject as service } from '@ember/service';
+import { validator, buildValidations } from 'ember-cp-validations';
 
-export default Controller.extend({
+const Validations = buildValidations({
+  'user.email': [
+    validator('ds-error'),
+    validator('presence', true),
+    validator('format', { type: 'email' })
+  ],
+  'user.password': [
+    validator('ds-error'),
+    validator('presence', true),
+    validator('length', {
+      min: 4,
+      max: 8
+    })
+  ],
+});
+
+export default Controller.extend(Validations, {
+  i18n: service(),
+  isFormValid: computed.alias('validations.isValid'),
+
   iAmRobot: true,
   reset: false,
   actions: {
@@ -11,17 +33,25 @@ export default Controller.extend({
       let newUser = {
         'email': this.model.email,
         'password': this.model.password
-        };
+      };
 
-      try {
-        newUser = this.get('store').createRecord('user', newUser);
-        await newUser.save();
-        this.transitionToRoute('index');
-      }
-      catch(e) {
-        e.user = newUser;
-        this.send('error', e);
-      }
+      this.set('user', newUser);
+      this.set('inputErrors', !this.get('isFormValid'));
+      if (this.get('isFormValid')) {
+        try {
+          newUser = this.get('store').createRecord('user', newUser);
+          ///this.set('user', this.get('store').createRecord('user', newUser));
+          await newUser.save();
+          //this.toto=await this.user.save();
+          this.transitionToRoute('index');
+        }
+        catch(e) {
+          e.user = newUser;
+          this.set('user', newUser);
+          this.set('inputErrors', !this.get('isFormValid'));
+          this.send('error', e);
+        }
+      }      
     },
 
     error(error, transition) {
@@ -46,5 +76,12 @@ export default Controller.extend({
 
   resetErrors() {
     this.set('errors', {});
+  },
+
+  didReceiveAttrs() {
+    this.setProperties({
+      user:{},
+      inputErrors: false,
+    });
   }
 });
