@@ -2,7 +2,7 @@
     <h2 class="text-center">Книги</h2>
     <div class="form-row navbar-panel justify-content-between">
         <div class="col-md-auto">
-            {{#link-to "edit-book" "new" class="btn btn-outline-primary my-2" title="Добавить книгу" disabled=(if session.isAuthenticated false true)}}
+            {{#link-to "edit-book" "new" class="btn btn-outline-primary my-2" title="Добавить книгу" disabled=(if (await (can "edit entity" model.user)) false true)}}
             <svg viewBox="0 0 16 16" class="bi bi-plus card-button" fill="currentColor"
                 xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd"
@@ -38,7 +38,7 @@
                         <div class="col">
                             <a href="{{book.description}}" class="card-link line-offset">Описание</a>
                         </div>
-                        {{#if session.isAuthenticated}}
+                        {{#if (await (can "edit entity" model))}}
                             <div class="coltext-right">
                                 {{#link-to "edit-book" book.id tagName="button" class="btn btn-edit"}}
                                 <svg viewBox="0 0 16 16" class="bi bi-pencil card-button" fill="currentColor"

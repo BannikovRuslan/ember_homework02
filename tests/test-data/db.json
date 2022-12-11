@@ -412,6 +412,12 @@
       "password": "aed439235437c68773dcb392849729f25edc0dd67119722c2a172e3fa5350711",
       "passwordConfirmation": "aed439235437c68773dcb392849729f25edc0dd67119722c2a172e3fa5350711",
       "id": 6
+    },
+    {
+      "email": "user@user.ru",
+      "password": "63c478c5de9c124b7c26497aff6524d9afb19147926f0765cd84c5b5ed79dfbf",
+      "passwordConfirmation": "63c478c5de9c124b7c26497aff6524d9afb19147926f0765cd84c5b5ed79dfbf",
+      "id": 7
     }
   ]
 }

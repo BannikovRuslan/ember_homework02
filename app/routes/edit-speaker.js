@@ -4,11 +4,23 @@ import EmberObject from '@ember/object';
 
 export default Route.extend({
     dataService: service('data'),
+    currentUser: service(),
     session: service(),
-    beforeModel() {
+    can: service(),
+    
+    async beforeModel() {
+        this._super(...arguments);
+
         if (!this.session.isAuthenticated) {
             this.transitionTo('login');
-        }
+        } else {
+            this.currentUser.load().then(() => {
+                if (this.can.cannot('edit entity')) {
+                    this.transitionTo('index');
+                }
+            });
+            
+        } 
     },
 
     model({ id }) {
