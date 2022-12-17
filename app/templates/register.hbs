@@ -2,7 +2,7 @@
     <main class="form-signin text-center">
         <form onsubmit={{action "saveUser"}}>
             <img class="mb-4" src="images/logo-dark.png" alt="" height="57">
-            <h1 class="h3 mb-3 fw-normal">Регистрация</h1>
+            <h1 class="h3 mb-3 fw-normal">{{t "menu.register"}}</h1>
             {{#each errors as |error|}}
                 <div class="error-alert">{{error.message}}</div>
             {{/each}}

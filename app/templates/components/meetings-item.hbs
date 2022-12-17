@@ -33,7 +33,7 @@
         </div>
         {{#if isEditMeeting}}
         {{else}}
-            {{#if (await (can "edit entity" model))}}
+            {{#if (can "edit entity" model)}}
                 <div class="col-md-auto">
                     {{#link-to "edit-meeting" meeting.id tagName="button" type="button" class="btn btn-edit"}}
                     <svg viewBox="0 0 16 16" class="bi bi-pencil card-button" fill="currentColor"

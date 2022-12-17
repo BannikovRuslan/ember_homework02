@@ -4,6 +4,7 @@ import ENV from '../config/environment';
 import { computed } from '@ember/object';
 import { inject as service } from '@ember/service';
 import { validator, buildValidations } from 'ember-cp-validations';
+import { getOwner } from '@ember/application';
 
 const Validations = buildValidations({
   'user.email': [
@@ -27,6 +28,7 @@ export default Controller.extend(Validations, {
 
   iAmRobot: true,
   reset: false,
+
   actions: {
     async saveUser(e) {
       e.preventDefault();
@@ -50,6 +52,9 @@ export default Controller.extend(Validations, {
           this.set('user', newUser);
           this.set('inputErrors', !this.get('isFormValid'));
           this.send('error', e);
+          const appInstance = getOwner(this);
+          const applicationLogger = appInstance.lookup('logger:app');
+          applicationLogger.log(e.errors);
         }
       }      
     },

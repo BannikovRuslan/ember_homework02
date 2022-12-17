@@ -1,27 +1,11 @@
-import Route from '@ember/routing/route';
+// import Route from '@ember/routing/route';
 import { inject as service } from '@ember/service';
 import EmberObject from '@ember/object';
+import checkAccess from './check-access';
 
-export default Route.extend({
+export default checkAccess.extend({
     dataService: service('data'),
-    currentUser: service(),
-    session: service(),
     can: service(),
-    
-    async beforeModel() {
-        this._super(...arguments);
-
-        if (!this.session.isAuthenticated) {
-            this.transitionTo('login');
-        } else {
-            this.currentUser.load().then(() => {
-                if (this.can.cannot('edit entity')) {
-                    this.transitionTo('index');
-                }
-            });
-            
-        } 
-    },
 
     model({ id }) {
         if (id === "new") {

@@ -35,7 +35,8 @@ const getBaseRoute = (req) => {
 const isAuthorized = (req) => {
   const baseRoute = getBaseRoute(req);
   if (req.path === '/recaptcha' || req.path === '/users' || req.path === '/token' 
-      || ((baseRoute === 'speakers' || baseRoute === 'books' || baseRoute === 'meetings' || baseRoute === 'presentations') && req.method === 'GET')) {
+      || ((baseRoute === 'speakers' || baseRoute === 'books' || baseRoute === 'meetings' || baseRoute === 'presentations') && req.method === 'GET')
+      || (req.path === '/errors')) {
     return 200;
   }
 
@@ -331,8 +332,35 @@ server.use(async (request, response, next) => {
 });
 //-------------end recaptcha block
 
+//-------------start log errors
+server.post('/errors', async function (req, res) {
+  
+  const db = router.db;
+  let errors = db.get('errors').value();
+  
+  let id = 1;
+  while (db.get('errors').find({ id: id }).value()) {
+    id += 1;
+    if (id >= Number.MAX_SAFE_INTEGER) {
+      res.json({});
+      return;
+    } 
+  }
+  console.log('new id = ', id);
 
-
+  const data = { 
+      'id': id,
+      'date': req.body.date,
+      'url': req.body.url,
+      'message': req.body.message,
+      'ip': req.ip
+  } 
+  
+  errors.push(data);
+  await db.write();
+  res.json(data);
+});
+//-------------end log errors
 
 // Use default router
 server.use(router)

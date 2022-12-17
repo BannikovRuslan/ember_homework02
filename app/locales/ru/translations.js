@@ -52,6 +52,8 @@ export default {
     "speakers": "Спикеры",
     "books": "Книги",
     "meetings": "Встречи клуба",
+    "request": "Оставить заявку",
+    "schedule": "Запланировать",
     "register": "Регистрация",
     "login": "Войти",
     "logout": "Выйти"

@@ -52,6 +52,8 @@ export default {
     "speakers": "Speakers",
     "books": "Books",
     "meetings": "Meetings",
+    "request": "Request",
+    "schedule": "Schedule",
     "reports": "Reports",
     "register": "Register",
     "login": "Login",

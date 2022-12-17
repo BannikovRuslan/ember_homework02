@@ -1,5 +1,8 @@
 import Controller from '@ember/controller';
 import { inject as service } from '@ember/service';
+import { debounce } from '@ember/runloop';
+
+const DELAY_TIME = 2000;
 
 export default Controller.extend({
     session: service(),
@@ -7,10 +10,15 @@ export default Controller.extend({
     search: '',
 
     async loadData() {
-        try {
-            this.set('isLoading', true);
-            const search = typeof this.search == 'undefined'? '':this.search.replace("#","").replace(",","");
+        this.set('searchSpeaker', this.search); 
+        this.set('isLoading', true);
+        this.loadDataStore();
+        this.set('isLoading', false);
+    },
 
+    async loadDataStore() {
+        try {
+            const search = this.searchSpeaker;
             if (search) {
                 const data = await this.store.query('speaker', { q: search});
                 this.set('model', data);
@@ -19,7 +27,6 @@ export default Controller.extend({
                 const data = await this.store.findAll('speaker');
                 this.set('model', data);
             }
-            this.set('isLoading', false);
         }
         catch (error) {
             this.send('error', error);
@@ -39,7 +46,19 @@ export default Controller.extend({
         
         async searchSpeakers(event) {
             event.preventDefault();
-            this.transitionToRoute("speakers", {queryParams: { search: this.searchBook }});
-        }     
+            this.transitionToRoute("speakers", {queryParams: { search: this.searchSpeaker }});
+        },
+        
+        loadDataOnInput(event) {
+            event.preventDefault();
+            
+            debounce(() => {
+                this.set('isLoading', true);
+                this.loadDataStore();
+                this.set('isLoading', false);
+                console.log(this.searchSpeaker);
+            }, DELAY_TIME);
+            
+        },
     }
 });

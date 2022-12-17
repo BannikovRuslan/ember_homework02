@@ -384,40 +384,26 @@
       "id": 1
     },
     {
-      "email": "user@user",
-      "password": "63c478c5de9c124b7c26497aff6524d9afb19147926f0765cd84c5b5ed79dfbf",
-      "passwordConfirmation": "63c478c5de9c124b7c26497aff6524d9afb19147926f0765cd84c5b5ed79dfbf",
-      "id": 2
-    },
-    {
-      "email": "u@uuu",
-      "password": "a121d1abd91d97c8528f08d12a1bf9e6fe6d37fe8a53d417561a85356447c785",
-      "passwordConfirmation": "a121d1abd91d97c8528f08d12a1bf9e6fe6d37fe8a53d417561a85356447c785",
-      "id": 3
-    },
-    {
-      "email": "w@w",
-      "password": "bc5a08df3838edcd8e8bd60ec1d300d742c94fd5238d7ad8a945f19bacbd45c0",
-      "passwordConfirmation": "bc5a08df3838edcd8e8bd60ec1d300d742c94fd5238d7ad8a945f19bacbd45c0",
-      "id": 4
-    },
-    {
-      "email": "user@fk.co",
-      "password": "e509bc7cdff3d7cc837841be106cbe5d8626271ad79e1c26cd1a32f4d45a14b7",
-      "passwordConfirmation": "e509bc7cdff3d7cc837841be106cbe5d8626271ad79e1c26cd1a32f4d45a14b7",
-      "id": 5
-    },
-    {
-      "email": "admin@admin.fdffd",
-      "password": "aed439235437c68773dcb392849729f25edc0dd67119722c2a172e3fa5350711",
-      "passwordConfirmation": "aed439235437c68773dcb392849729f25edc0dd67119722c2a172e3fa5350711",
-      "id": 6
-    },
-    {
       "email": "user@user.ru",
       "password": "63c478c5de9c124b7c26497aff6524d9afb19147926f0765cd84c5b5ed79dfbf",
       "passwordConfirmation": "63c478c5de9c124b7c26497aff6524d9afb19147926f0765cd84c5b5ed79dfbf",
       "id": 7
+    }
+  ],
+  "errors": [
+    {
+      "id": 1,
+      "date": "2022-12-12T12:42:16.613Z",
+      "url": "http://localhost:4200/login#",
+      "message": "Error logging in user with that e-mail and password",
+      "ip": "::1"
+    },
+    {
+      "id": 9007199254740990,
+      "date": "2022-12-12T13:01:08.797Z",
+      "url": "http://localhost:4200/login#",
+      "message": "Error logging in user with that e-mail and password",
+      "ip": "::1"
     }
   ]
 }

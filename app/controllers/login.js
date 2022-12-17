@@ -1,8 +1,8 @@
 import Controller from '@ember/controller';
 import { inject as service } from '@ember/service';
-import { set, get, computed } from '@ember/object';
-import EmberObject from '@ember/object';
+import { computed } from '@ember/object';
 import { validator, buildValidations } from 'ember-cp-validations';
+import { getOwner } from '@ember/application';
 
 const Validations = buildValidations({
   'user.email': [
@@ -32,6 +32,8 @@ export default Controller.extend(Validations, {
 
   session: service(),
   isRemember: false,
+
+  errorsLogger: service(),
   
   actions: {
     async login(e) {
@@ -49,6 +51,9 @@ export default Controller.extend(Validations, {
         }
         catch(e) {
           this.send('error', e);
+          const appInstance = getOwner(this);
+          const applicationLogger = appInstance.lookup('logger:app');
+          applicationLogger.log(e.json.errors);
         }
       }      
     },

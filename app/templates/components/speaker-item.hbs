@@ -4,7 +4,7 @@
         <div class="card-body">
             <h5 class="card-title">{{speaker.lastName}} {{speaker.firstName}} {{speaker.middleName}}</h5>
         </div>
-        {{#if (await (can "edit entity" model))}}
+        {{#if (can "edit entity" model)}}
         <div class="card-footer">
             <div class="row">
                 <div class="col">
