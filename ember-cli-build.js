@@ -8,6 +8,9 @@ module.exports = function(defaults) {
     'ember-bootstrap': {
       'bootstrapVersion': 4,
       'importBootstrapCSS': false
+    },
+    'ember-power-select': {
+      'theme': false
     }
   });
 
@@ -25,20 +28,30 @@ module.exports = function(defaults) {
   // along with the exports of each module as its value.
 
   app.import('vendor/tagsinput.css');
+  app.import('vendor/power-select-new-styles.css');
+  //app.import('vendor/bootstrap/bootstrap-datepicker.css');
+  //app.import('vendor/bootstrap/bootstrap-select.min.css');
+  //app.import('vendor/bootstrap/styles.css');
 
   app.import('vendor/jquery.flexberry.downloadFile.js');
   app.import('vendor/jquery.blobajaxtransport.js');
+  
   // app.import('node_modules/blueimp-file-upload/js/jquery.fileupload.js');
 
   const jsFiles = funnel('vendor', {
-    include: ['popper.min.js', 'tagsinput.js', 'jquery-ui.js'],
+    include: ['popper.min.js', 'popper.min.js.map', 'tagsinput.js', 'jquery-ui.js', 'bootstrap-datepicker.ru.min.js'],
     destDir: 'js'
   });
+
+  // const jsBootsrapFiles = funnel('vendor/bootstrap', {
+  //   include: ['bootstrap-datepicker.min.js', 'bootstrap-datepicker.ru.min.js'],
+  //   destDir: 'js/bootstrap'
+  // });
 
   const jqueryFiles = funnel('node_modules/blueimp-file-upload/js', {
     include: ['**/*.js'],
     destDir: 'js'
   });
 
-  return app.toTree([jsFiles, jqueryFiles]);
+  return app.toTree([jsFiles, jqueryFiles/*, jsBootsrapFiles*/]);
 };

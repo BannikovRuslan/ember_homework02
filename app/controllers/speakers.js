@@ -1,40 +1,64 @@
 import Controller from '@ember/controller';
 import { inject as service } from '@ember/service';
+import { debounce } from '@ember/runloop';
+
+const DELAY_TIME = 2000;
 
 export default Controller.extend({
-    dataService: service('data'),
+    session: service(),
     queryParams: ["search"],
     search: '',
 
     async loadData() {
+        this.set('searchSpeaker', this.search); 
+        this.set('isLoading', true);
+        this.loadDataStore();
+        this.set('isLoading', false);
+    },
+
+    async loadDataStore() {
         try {
-            this.set('isLoading', true);
-            const search = typeof this.search == 'undefined'? '':this.search.replace("#","").replace(",","");
-            console.log("search=", search);
-            const data = await this.get('dataService').getSpeakers(search);
-            this.set('model', data);
-            this.set('isLoading', false);
+            const search = this.searchSpeaker;
+            if (search) {
+                const data = await this.store.query('speaker', { q: search});
+                this.set('model', data);
+            } 
+            else {
+                const data = await this.store.findAll('speaker');
+                this.set('model', data);
+            }
         }
         catch (error) {
-            this.send('error', new Error('Connection failed'));
+            this.send('error', error);
         }
     },
 
     actions: {
         async deleteSpeaker(speaker) {
             try {
-                await this.get('dataService').deleteSpeaker(speaker);
-                console.log("speaker deleted ");
-                this.send('refreshSpeakers');
+                await speaker.destroyRecord();
+                speaker.unloadRecord();
             } 
             catch (error) {
-                this.send('error', new Error('Connection failed'));
+                this.send('error', error);
             }
         },
         
         async searchSpeakers(event) {
             event.preventDefault();
-            this.transitionToRoute("speakers", {queryParams: { search: this.searchBook }});
-        }     
+            this.transitionToRoute("speakers", {queryParams: { search: this.searchSpeaker }});
+        },
+        
+        loadDataOnInput(event) {
+            event.preventDefault();
+            
+            debounce(() => {
+                this.set('isLoading', true);
+                this.loadDataStore();
+                this.set('isLoading', false);
+                console.log(this.searchSpeaker);
+            }, DELAY_TIME);
+            
+        },
     }
 });

@@ -69,9 +69,5 @@ export default Component.extend({
     const el = this.$();
     el.off('itemAdded', this.addTag);
     el.off('itemRemoved', this.removeTag);
-  },
-
-  searchByTag(tag) {
-    console.log(tag);
   }
 });

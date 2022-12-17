@@ -2,13 +2,17 @@ import { helper } from '@ember/component/helper';
 
 export function prepareTags(params/*, hash*/) {
   
-  if (!params[0]) return params;
-  const length = params[0].length;
+  if (!params[0]) {
+    return params;
+  } 
+
+  let tags = params[0].copy();
+  const length = tags.length;
   for (let i = 0; i < length-1; i++) {
-    params[0][i] = "#" + params[0][i] + ",";
+    tags[i] = "#" + tags[i] + ",";
   }
-  params[0][length-1] = "#" + params[0][length-1];
-  return params[0];
+  tags[length-1] = "#" + tags[length-1];
+  return tags;
 }
 
 export default helper(prepareTags);

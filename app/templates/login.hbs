@@ -1,0 +1,37 @@
+<div class="form-signin-wrapper">
+    <main class="form-signin text-center">
+        <form onsubmit={{action "login"}}>
+            <img class="mb-4" src="images/logo-dark.png" alt="" height="57">
+            <h1 class="h3 mb-3 fw-normal">Вход</h1>
+            {{#each errors as |error|}}
+                <div class="error-alert">{{error.detail}}</div>
+            {{/each}}
+            {{#if inputErrors}}
+                {{#if (v-get this 'user.email' 'isInvalid')}}
+                    <span class="text-danger">
+                        {{v-get this 'user.email' 'message'}}
+                    </span>
+                {{/if}}<br>
+                {{#if (v-get this 'user.password' 'isInvalid')}}
+                    <span class="text-danger">
+                        {{v-get this 'user.password' 'message'}}
+                    </span>
+                {{/if}}
+            {{/if}}
+            <div class="form-floating">
+                {{input value=model.email type="email" class="form-control" id="floatingInput" placeholder="name@example.com"}}
+            </div>
+            <div class="form-floating">
+                {{input value=model.password type="password" class="form-control" id="floatingPassword" placeholder="Пароль"}}
+            </div>
+
+            <div class="checkbox mb-3">
+                <label>
+                    {{input type="checkbox" checked=isRemember}} Запомнить
+                </label>
+            </div>
+            <button class="w-100 btn btn-lg btn-primary mb-3" type="submit">Войти</button>
+            {{#link-to "index" class="w-100"}}Назад{{/link-to}}
+        </form>
+    </main>
+</div>

@@ -1,33 +1,7 @@
 {
-  "authors": [
-    {
-      "id": 2,
-      "firstName": "Ray",
-      "lastName": "Bradbury"
-    },
-    {
-      "id": 1,
-      "firstName": "Arthur",
-      "lastName": "Doyle"
-    },
-    {
-      "id": 3,
-      "firstName": "Robert",
-      "lastName": "Frost"
-    },
-    {
-      "firstName": "Jhon",
-      "lastName": "Smith",
-      "id": 7
-    }
-  ],
   "books": [
     {
       "id": 1,
-      "o": {
-        "t": 1,
-        "m": "test"
-      },
       "cover": "/uploads/cover_stories-1666268686848.webp",
       "title": "The Stories about Sherlock Holmes",
       "author": "Arthur Doyle",
@@ -42,10 +16,6 @@
     },
     {
       "id": 2,
-      "o": {
-        "t": 1,
-        "m": "test"
-      },
       "cover": "/uploads/cover_wine-1666268665562.webp",
       "title": "The Dandelion Wine",
       "author": "Ray Bradbury",
@@ -59,10 +29,6 @@
     },
     {
       "id": 3,
-      "o": {
-        "t": 1,
-        "m": "test"
-      },
       "cover": "/uploads/cover_basker-1666268697099.webp",
       "title": "The Hound of the Baskervilles",
       "author": "Arthur Doyle",
@@ -91,7 +57,7 @@
     {
       "title": "Test",
       "author": "Testov Testovich",
-      "pages": "150",
+      "pages": 151,
       "cover": "/uploads/book-cover-1666615185931.jpg",
       "tags": [
         "test",
@@ -101,6 +67,43 @@
       "description": "https://empty.com",
       "rating": 0,
       "id": 5
+    },
+    {
+      "title": "2",
+      "author": "3",
+      "pages": "7",
+      "cover": "/uploads/cover_basker-1667033302188.webp",
+      "tags": [
+        "weqwe",
+        "werwerewr433"
+      ],
+      "description": "https://empty.comere",
+      "rating": 0,
+      "id": 6
+    },
+    {
+      "title": "test14",
+      "author": "Tesovichus14",
+      "pages": 14,
+      "cover": "/uploads/cover_wine-1667224812523.webp",
+      "tags": [
+        "test14"
+      ],
+      "description": "https://empty.com14",
+      "rating": 0,
+      "id": 14
+    },
+    {
+      "title": "test13",
+      "author": "Testovichus13",
+      "pages": 13,
+      "cover": "/uploads/cover_wine-1667224812523.webp",
+      "description": "https://empty.com",
+      "rating": 0,
+      "id": 16,
+      "tags": [
+        "test13"
+      ]
     }
   ],
   "speakers": [
@@ -143,13 +146,264 @@
       "firstName": "Vsevolod",
       "lastName": "Bagration",
       "middleName": "Aliberovich",
+      "foto": "/images/speaker.jpg",
       "id": 6
     },
     {
       "firstName": "Maksim",
       "lastName": "Dolgorukov",
       "middleName": "Anatolievich",
+      "foto": "/images/speaker.jpg",
       "id": 7
+    },
+    {
+      "lastName": "ewrewGO",
+      "firstName": "GOoo",
+      "middleName": "rewrewr",
+      "foto": "/images/speaker.jpg",
+      "id": 8
+    }
+  ],
+  "meetings": [
+    {
+      "date": "2022-11-21T16:24:38.521Z",
+      "id": 1
+    },
+    {
+      "date": "2022-11-23T00:00:00.000Z",
+      "id": 2
+    },
+    {
+      "date": "2022-11-24T00:00:00.000Z",
+      "id": 3
+    },
+    {
+      "date": "2022-11-25T00:00:00.000Z",
+      "id": 4
+    },
+    {
+      "date": "2022-11-23T00:00:00.000Z",
+      "id": 5
+    },
+    {
+      "date": "2022-11-23T00:00:00.000Z",
+      "id": 6
+    },
+    {
+      "date": "2022-12-01T00:00:00.000Z",
+      "id": 8
+    },
+    {
+      "date": "2022-12-02T14:00:56.340Z",
+      "id": 9
+    },
+    {
+      "date": "2022-12-02T14:28:34.006Z",
+      "id": 10
+    },
+    {
+      "date": "2022-12-05T12:07:59.117Z",
+      "id": 11
+    },
+    {
+      "date": "2022-12-05T12:11:17.429Z",
+      "id": 12
+    },
+    {
+      "date": "2022-12-05T12:11:17.429Z",
+      "id": 13
+    },
+    {
+      "date": "2022-12-05T12:16:27.983Z",
+      "id": 14
+    },
+    {
+      "date": "2022-12-05T12:16:27.983Z",
+      "id": 15
+    },
+    {
+      "date": "2022-12-05T12:16:27.983Z",
+      "id": 16
+    },
+    {
+      "date": "2022-12-05T12:18:24.961Z",
+      "id": 17
+    },
+    {
+      "date": "2022-12-05T12:18:38.905Z",
+      "id": 18
+    },
+    {
+      "date": "2022-12-05T12:18:38.905Z",
+      "id": 19
+    },
+    {
+      "date": "2022-12-05T12:19:10.640Z",
+      "id": 20
+    }
+  ],
+  "presentations": [
+    {
+      "date": "2022-11-21T16:24:38.521Z",
+      "rating": 5,
+      "urlPresentation": "https://presentation.com",
+      "urlVideo": "https://presentation-video.com",
+      "review": "Есть много вариантов Lorem Ipsum, но большинство из них имеет не всегда приемлемые модификации, например, юмористические вставки или слова, которые даже отдалённо не напоминают латынь. Если вам нужен Lorem Ipsum для серьёзного проекта, вы наверняка не хотите какой-нибудь шутки, скрытой в середине абзаца. Также все другие известные генераторы Lorem Ipsum используют один и тот же текст, который они просто повторяют, пока не достигнут нужный объём. Это делает предлагаемый здесь генератор единственным настоящим Lorem Ipsum генератором.",
+      "speakerId": 1,
+      "bookId": 1,
+      "meetingId": 1,
+      "id": 1
+    },
+    {
+      "date": "2022-11-21T16:24:38.521Z",
+      "rating": 4,
+      "urlPresentation": "",
+      "urlVideo": "https://presentation-video.com",
+      "review": "Если вам нужен Lorem Ipsum для серьёзного проекта, вы наверняка не хотите какой-нибудь шутки, скрытой в середине абзаца. Также все другие известные генераторы Lorem Ipsum используют один и тот же текст, который они просто повторяют, пока не достигнут нужный объём. ",
+      "speakerId": 3,
+      "bookId": 2,
+      "meetingId": 1,
+      "id": 2
+    },
+    {
+      "date": "2022-11-23T00:00:00.000Z",
+      "rating": 3,
+      "urlPresentation": "https://presentation.com",
+      "urlVideo": "https://presentation-video.com",
+      "review": "Это делает предлагаемый здесь генератор единственным настоящим Lorem Ipsum генератором.",
+      "speakerId": 2,
+      "bookId": 3,
+      "meetingId": 2,
+      "id": 3
+    },
+    {
+      "date": "2022-11-24T00:00:00.000Z",
+      "rating": 2,
+      "urlPresentation": "",
+      "urlVideo": "https://presentation-video.com",
+      "review": "Есть много вариантов Lorem Ipsum, но большинство из них имеет не всегда приемлемые модификации, например, юмористические вставки или слова, которые даже отдалённо не напоминают латынь.",
+      "speakerId": 4,
+      "bookId": 4,
+      "meetingId": 3,
+      "id": 4
+    },
+    {
+      "date": "2022-11-24T00:00:00.000Z",
+      "rating": 1,
+      "urlPresentation": "",
+      "urlVideo": "https://presentation-video.com",
+      "review": "Это делает предлагаемый здесь генератор единственным настоящим Lorem Ipsum генератором.",
+      "speakerId": 6,
+      "bookId": 3,
+      "meetingId": 3,
+      "id": 5
+    },
+    {
+      "date": "2022-11-24T00:00:00.000Z",
+      "rating": 1,
+      "urlPresentation": "https://presentation.com",
+      "urlVideo": "https://presentation-video.com",
+      "review": "",
+      "speakerId": 5,
+      "bookId": 2,
+      "meetingId": 3,
+      "id": 6
+    },
+    {
+      "date": "2022-11-25T00:00:00.000Z",
+      "rating": 5,
+      "urlPresentation": "",
+      "urlVideo": "https://presentation-video.com",
+      "review": "Также все другие известные генераторы Lorem Ipsum используют один и тот же текст, который они просто повторяют, пока не достигнут нужный объём. Это делает предлагаемый здесь генератор единственным настоящим Lorem Ipsum генератором.",
+      "speakerId": 7,
+      "bookId": 1,
+      "meetingId": 4,
+      "id": 7
+    },
+    {
+      "date": "2022-11-23T00:00:00.000Z",
+      "rating": 4,
+      "urlPresentation": "",
+      "urlVideo": "https://presentation-video.com",
+      "review": "Есть много вариантов Lorem Ipsum.",
+      "speakerId": 4,
+      "bookId": 5,
+      "meetingId": 5,
+      "id": 8
+    },
+    {
+      "date": "2022-11-26T11:03:49.858Z",
+      "rating": 4,
+      "urlPresentation": "https://presentation.com",
+      "urlVideo": "https://presentation-video.com",
+      "review": "настоящим Lorem Ipsum генератором.",
+      "speakerId": 4,
+      "bookId": 16,
+      "meetingId": 6,
+      "id": 9
+    },
+    {
+      "date": "2022-11-26T11:03:49.858Z",
+      "rating": 2,
+      "urlPresentation": "",
+      "urlVideo": "https://presentation-video.com",
+      "review": "Есть.",
+      "speakerId": 6,
+      "bookId": 2,
+      "meetingId": 6,
+      "id": 10
+    },
+    {
+      "date": "2022-12-01T00:00:00.000Z",
+      "rating": 2,
+      "urlPresentation": "https://presentation.com",
+      "urlVideo": "https://presentation-video.com",
+      "review": "инают латынь. Если вам нужен Lorem Ipsum для серьёзного проекта, вы наверняка не хотите какой-нибудь шутки, скрытой в середине абзаца. Также все другие известные генераторы Lorem Ipsum используют один и тот же текст, который они просто повторяют, пока не достигнут нужный объём. Это делает предлагаемый здесь генератор единственным настоящим Lorem Ipsum генератором.",
+      "speakerId": 5,
+      "bookId": 3,
+      "meetingId": 8,
+      "id": 13
+    },
+    {
+      "date": "2022-12-02T14:28:34.006Z",
+      "rating": 2,
+      "urlPresentation": "https://presentation.com",
+      "urlVideo": "https://presentation-video.com",
+      "review": " Lorem Ipsum генератором.",
+      "speakerId": 3,
+      "bookId": 4,
+      "meetingId": 10,
+      "id": 14
+    }
+  ],
+  "users": [
+    {
+      "email": "admin@admin.ru",
+      "password": "aed439235437c68773dcb392849729f25edc0dd67119722c2a172e3fa5350711",
+      "passwordConfirmation": "aed439235437c68773dcb392849729f25edc0dd67119722c2a172e3fa5350711",
+      "id": 1
+    },
+    {
+      "email": "user@user.ru",
+      "password": "63c478c5de9c124b7c26497aff6524d9afb19147926f0765cd84c5b5ed79dfbf",
+      "passwordConfirmation": "63c478c5de9c124b7c26497aff6524d9afb19147926f0765cd84c5b5ed79dfbf",
+      "id": 7
+    }
+  ],
+  "errors": [
+    {
+      "id": 1,
+      "date": "2022-12-12T12:42:16.613Z",
+      "url": "http://localhost:4200/login#",
+      "message": "Error logging in user with that e-mail and password",
+      "ip": "::1"
+    },
+    {
+      "id": 9007199254740990,
+      "date": "2022-12-12T13:01:08.797Z",
+      "url": "http://localhost:4200/login#",
+      "message": "Error logging in user with that e-mail and password",
+      "ip": "::1"
     }
   ]
 }

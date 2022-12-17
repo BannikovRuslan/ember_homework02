@@ -7,6 +7,9 @@ module.exports = function(environment) {
     rootURL: '/',
     backendURL: 'http://localhost:3000',
     locationType: 'auto',
+    bootstrapDatepicker: {
+      includeLocales: [ 'ru' ]
+    },
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
@@ -21,6 +24,18 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
+    },
+    'ember-simple-auth-token': {
+      serverTokenEndpoint: 'http://localhost:3000/token',
+      refreshAccessTokens: false
+    },
+    'ember-cli-google': {
+      recaptcha: {
+        siteKey: '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI',
+      },
+    },
+    i18n: {
+      defaultLocale: 'en'
     }
   };
   ENV.fileUploadURL = ENV.backendURL + '/FileUpload';

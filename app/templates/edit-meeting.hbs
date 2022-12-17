@@ -1,0 +1,14 @@
+<div class="htop">
+    <h2 class="text-center">Редактирование встречи</h2>
+    <form class="edit-form" onsubmit={{action "saveMeeting"}}>
+        {{meetings-item meeting=model isEditMeeting=true onclick=(action "deletePresentation")}}
+        <div class="form-group row">
+            <div class="col-12 text-right">
+                <button type="submit" class="btn btn-primary btn-lg">Сохранить</button>
+                {{#link-to "meetings" tagName="button" class="btn btn-outline-secondary btn-lg"}}
+                    Отмена
+                {{/link-to}}
+            </div>
+        </div>
+    </form>
+</div>

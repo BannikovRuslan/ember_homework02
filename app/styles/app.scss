@@ -2,3 +2,10 @@
 @import "ember-bootstrap/bootstrap";
 @import "mainpage.scss";
 @import "fixbugs.scss";
+
+$ember-power-select-trigger-ltr-padding: 0.5rem 1rem;
+$ember-power-select-border-color: #ced4da;
+$ember-power-select-trigger-icon-color: #495057;
+$ember-power-select-line-height: 1.5;
+
+@import "ember-power-select";

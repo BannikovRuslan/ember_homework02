@@ -1,4 +1,4 @@
-<img src={{book.cover}} class="card-img-top" alt="Обложка книги">
+<img src={{if book.cover book.cover "/images/book-cover.jpg"}} class="card-img-top" alt="Обложка книги">
 <div class="card-header">
     <h5 class="card-title">{{book.title}}</h5>
 </div>
@@ -8,7 +8,7 @@
         <div><strong>Количество страниц</strong>: {{book.pages}}</div>
         <div><strong>Теги</strong>: 
         {{#each (prepare-tags book.tags) as |tag|}}
-            {{#link-to "books" (query-params tags=tag) class="tag-link"}}
+            {{#link-to "books" (query-params tags=(clean-tags tag)) class="tag-link"}}
                 <span class="small">{{tag}}</span>
             {{/link-to}}
         {{/each}}
